@@ -1,7 +1,7 @@
 import { Heart, ShoppingCart, UserCircle } from "lucide-react";
 import { useState } from "react";
 import { useCartStore } from "../features/cart/store";
-import { CartDrawer } from "../features/cart/cartDrawer";
+import { CartDrawer } from "../features/cart/CartDrawer";
 
 export const Navs = () => {
   const [open, setOpen] = useState(false);
