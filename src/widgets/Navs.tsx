@@ -13,20 +13,36 @@ export const Navs = () => {
     <>
       <ul className="flex gap-4">
         <li
-          className="flex gap-1 items-center"
+          className="flex gap-1 items-center cursor-pointer"
           onClick={() => setOpen((prev) => !prev)}
         >
-          <ShoppingCart /> <span className="text-[#5C5C5C]">{total}</span>
+          <ShoppingCart color="#5C5C5C" />{" "}
+          <span className="text-[#5C5C5C] font-bold">{total.toFixed(2)}</span>
+        </li>
+
+        <li className="flex gap-1 items-center">
+          <Heart color="#5C5C5C" size={20} />{" "}
+          <span className="text-[#5C5C5C]">Закладки</span>
         </li>
         <li className="flex gap-1 items-center">
-          <Heart /> <span className="text-[#5C5C5C]">Закладки</span>
-        </li>
-        <li className="flex gap-1 items-center">
-          <UserCircle /> <span className="text-[#5C5C5C]">Профиль</span>
+          <UserCircle color="#5C5C5C" size={20} />{" "}
+          <span className="text-[#5C5C5C]">Профиль</span>
         </li>
       </ul>
 
-      {open && <CartDrawer items={items} onRemove={() => setOpen(false)} />}
+      {open && <CartDrawer items={items} />}
     </>
+  );
+};
+
+const NavItem = ({ onClick, text, icon }) => {
+  return (
+    <li
+      className={`flex gap-1 items-center ${onClick != null ? "cursor-pointer" : ""}`}
+      onClick={onClick}
+    >
+      {icon}
+      <span className="text-[#5C5C5C] font-bold">{text}</span>
+    </li>
   );
 };

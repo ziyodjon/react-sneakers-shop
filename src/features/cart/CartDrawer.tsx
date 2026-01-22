@@ -1,19 +1,20 @@
 import type { Product } from "../../entities/product/types";
+import { useCartStore } from "./store";
 
 interface Props {
   items: Product[];
-  onRemove: (id: number) => void;
 }
 
-export const CartDrawer = ({ items, onRemove }: Props) => {
+export const CartDrawer = ({ items }: Props) => {
   const total = items.reduce((sum, i) => sum + i.price, 0);
   const tax = Math.round(total * 0.05);
+  const removeItem = useCartStore((state) => state.removeItem);
 
   return (
     <aside className="fixed right-0 top-0 h-full w-[385px] bg-white p-6 shadow-xl z-50">
       <h2 className="mb-6 text-2xl font-bold">Корзина</h2>
 
-      <div className="space-y-4">
+      <div className="space-y-4 overflow-scroll h-[700px]">
         {items.map((item) => (
           <div
             key={item.id}
@@ -25,8 +26,8 @@ export const CartDrawer = ({ items, onRemove }: Props) => {
               <b>{item.price.toLocaleString()} $</b>
             </div>
             <button
-              onClick={() => onRemove(item.id)}
-              className="h-8 w-8 rounded-lg border text-gray-400 hover:bg-gray-100"
+              onClick={() => removeItem(item.id)}
+              className="h-8 w-8 rounded-lg border text-gray-400 hover:bg-gray-100 cursor-pointer hover:bg-red-300 hover:text-white"
             >
               ×
             </button>
