@@ -35,14 +35,14 @@ export const Navs = () => {
   );
 };
 
-const NavItem = ({ onClick, text, icon }) => {
-  return (
-    <li
-      className={`flex gap-1 items-center ${onClick != null ? "cursor-pointer" : ""}`}
-      onClick={onClick}
-    >
-      {icon}
-      <span className="text-[#5C5C5C] font-bold">{text}</span>
-    </li>
-  );
-};
+// const NavItem = ({ onClick, text, icon }) => {
+//   return (
+//     <li
+//       className={`flex gap-1 items-center ${onClick != null ? "cursor-pointer" : ""}`}
+//       onClick={onClick}
+//     >
+//       {icon}
+//       <span className="text-[#5C5C5C] font-bold">{text}</span>
+//     </li>
+//   );
+// };
